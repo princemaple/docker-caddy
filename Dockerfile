@@ -7,7 +7,7 @@ RUN apk add --no-cache git
 RUN git clone https://github.com/mholt/caddy \
       -b "v${version}" /go/src/github.com/mholt/caddy
 
-ARG plugins
+ARG plugins="filemanager"
 
 RUN go get -v github.com/abiosoft/caddyplug/caddyplug
 
