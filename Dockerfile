@@ -1,6 +1,6 @@
 FROM golang:1.9-alpine as builder
 
-ARG version="0.10.9"
+ARG version="0.10.10"
 
 RUN apk add --no-cache git
 
@@ -9,11 +9,12 @@ RUN git clone https://github.com/mholt/caddy \
 
 ARG plugins
 
-RUN echo "package caddyhttp" > /go/src/github.com/mholt/caddy/caddyhttp/plugins.go
+RUN go get -v github.com/abiosoft/caddyplug/caddyplug
+
 RUN for plugin in $(echo $plugins | tr "," " "); do \
-      go get $plugin; \
-      echo "import _ \"$plugin\"" >> \
-        /go/src/github.com/mholt/caddy/caddyhttp/plugins.go; \
+    go get -v $(caddyplug package $plugin); \
+    printf "package caddyhttp\nimport _ \"$(caddyplug package $plugin)\"" > \
+        /go/src/github.com/mholt/caddy/caddyhttp/$plugin.go ; \
     done
 
 RUN git clone https://github.com/caddyserver/builds /go/src/github.com/caddyserver/builds
@@ -27,7 +28,7 @@ FROM alpine:3.6
 
 ARG deps
 
-LABEL caddy_version="0.10.9"
+LABEL caddy_version="0.10.10"
 
 RUN apk add --no-cache $deps \
     && rm -rf /var/cache/apk
