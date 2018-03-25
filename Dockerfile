@@ -1,7 +1,7 @@
 FROM abiosoft/caddy:builder as builder
 
 ARG version="0.10.11"
-ARG plugins="filemanager"
+ARG plugins="filemanager cache"
 
 RUN VERSION=${version} PLUGINS=${plugins} /bin/sh /usr/bin/builder.sh
 
