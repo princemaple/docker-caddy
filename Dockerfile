@@ -1,6 +1,6 @@
 FROM abiosoft/caddy:builder as builder
 
-ARG version="0.10.11"
+ARG version="0.10.12"
 ARG plugins="filemanager cache"
 
 RUN VERSION=${version} PLUGINS=${plugins} /bin/sh /usr/bin/builder.sh
@@ -8,7 +8,7 @@ RUN VERSION=${version} PLUGINS=${plugins} /bin/sh /usr/bin/builder.sh
 
 FROM alpine:3.7
 
-LABEL caddy_version="0.10.11"
+LABEL caddy_version="0.10.12"
 
 RUN apk add --no-cache openssh-client ca-certificates
 
