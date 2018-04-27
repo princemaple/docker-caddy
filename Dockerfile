@@ -1,7 +1,7 @@
 FROM abiosoft/caddy:builder as builder
 
 ARG version="0.10.14"
-ARG plugins="filemanager cache"
+ARG plugins="forwardproxy"
 
 RUN VERSION=${version} PLUGINS=${plugins} /bin/sh /usr/bin/builder.sh
 
