@@ -6,7 +6,7 @@ RUN VERSION="0.11.0" PLUGINS="filemanager cache" ENABLE_TELEMETRY="false" /bin/s
 
 FROM alpine:3.7
 
-LABEL caddy_version="0.11.0"
+LABEL caddy_version="0.11.1"
 
 ENV ENABLE_TELEMETRY="false"
 
