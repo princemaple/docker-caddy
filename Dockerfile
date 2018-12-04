@@ -4,7 +4,7 @@ RUN go get -v github.com/abiosoft/parent
 RUN VERSION="0.11.1" PLUGINS="filemanager cache" ENABLE_TELEMETRY="false" /bin/sh /usr/bin/builder.sh
 
 
-FROM alpine:3.7
+FROM alpine:3.8
 
 LABEL caddy_version="0.11.1"
 
