@@ -21,5 +21,7 @@ EXPOSE 80 443 2015
 VOLUME /root/.caddy /srv
 WORKDIR /srv
 
+COPY --from=builder /go/bin/parent /bin/parent
+
 ENTRYPOINT ["/bin/parent", "caddy"]
 CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree"]
