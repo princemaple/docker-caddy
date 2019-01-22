@@ -1,7 +1,7 @@
 FROM abiosoft/caddy:builder as builder
 
 RUN go get -v github.com/abiosoft/parent
-RUN VERSION="0.11.2" PLUGINS="filebrowser cache cors" ENABLE_TELEMETRY="false" /bin/sh /usr/bin/builder.sh
+RUN VERSION="0.11.2" PLUGINS="cache cors" ENABLE_TELEMETRY="false" /bin/sh /usr/bin/builder.sh
 
 
 FROM alpine:3.8
