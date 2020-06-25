@@ -7,6 +7,6 @@ FROM alpine:3.12
 
 WORKDIR /var/caddy
 
-COPY --from BUILDER /go/caddy .
+COPY --from=BUILDER /go/caddy .
 
 CMD ["caddy" "run" "--config" "/etc/caddy/Caddyfile" "--adapter" "caddyfile"]
