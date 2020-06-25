@@ -1,27 +1,12 @@
-FROM abiosoft/caddy:builder as builder
+FROM golang:alpine AS BUILDER
 
-RUN go get -v github.com/abiosoft/parent
-RUN VERSION="1.0.4" PLUGINS="cache cors" ENABLE_TELEMETRY="false" /bin/sh /usr/bin/builder.sh
+RUN apk add git && go get -u github.com/caddyserver/xcaddy/cmd/xcaddy \
+    && xcaddy build v2.0.0 --with github.com/libdns/cloudflare
 
+FROM alpine:3.12
 
-FROM alpine:3.10
+WORKDIR /var/caddy
 
-LABEL caddy_version="1.0.4"
+COPY --from BUILDER /go/caddy .
 
-ENV ENABLE_TELEMETRY="false"
-
-RUN apk add --no-cache openssh-client ca-certificates
-
-COPY --from=builder /install/caddy /usr/bin/caddy
-
-RUN /usr/bin/caddy -version
-RUN /usr/bin/caddy -plugins
-
-EXPOSE 80 443 2015
-VOLUME /root/.caddy /srv
-WORKDIR /srv
-
-COPY --from=builder /go/bin/parent /bin/parent
-
-ENTRYPOINT ["/bin/parent", "caddy"]
-CMD ["--conf", "/etc/Caddyfile", "--log", "stdout", "--agree"]
+CMD ["caddy" "run" "--config" "/etc/caddy/Caddyfile" "--adapter" "caddyfile"]
