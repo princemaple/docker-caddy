@@ -9,4 +9,10 @@ WORKDIR /var/caddy
 
 COPY --from=BUILDER /go/caddy /bin
 
+ENV XDG_CONFIG_HOME=/config
+ENV XDG_DATA_HOME=/data
+
+VOLUME /config
+VOLUME /data
+
 CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
