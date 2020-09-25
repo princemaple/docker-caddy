@@ -1,18 +1,8 @@
-FROM golang:alpine AS BUILDER
+FROM caddy:2.2.0-builder AS builder
 
-RUN apk add git && go get -u github.com/caddyserver/xcaddy/cmd/xcaddy \
-    && xcaddy build v2.1.1 --with github.com/caddy-dns/cloudflare
+RUN caddy-builder \
+    github.com/caddy-dns/cloudflare
 
-FROM alpine:3.12
+FROM caddy:2.2.0
 
-WORKDIR /var/caddy
-
-COPY --from=BUILDER /go/caddy /bin
-
-ENV XDG_CONFIG_HOME=/config
-ENV XDG_DATA_HOME=/data
-
-VOLUME /config
-VOLUME /data
-
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
