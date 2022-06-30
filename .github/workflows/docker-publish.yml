@@ -52,7 +52,7 @@ jobs:
 
       - name: Build and push latest
         uses: docker/build-push-action@v3
-        if: matrix.dns == "cloudflare"
+        if: matrix.dns == 'cloudflare'
         with:
           context: .
           push: true
@@ -60,7 +60,6 @@ jobs:
 
       - name: Build and push tag
         uses: docker/build-push-action@v3
-        if: matrix.dns == "cloudflare"
         with:
           context: .
           push: true
