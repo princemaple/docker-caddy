@@ -61,5 +61,5 @@ jobs:
           context: .
           push: true
           tags: $IMAGE_NAME:${{ github.event.release.tag_name }}-${{ matrix.dns }}
-          build-args:
-            DNS: ${{ matrix.dns }}
+          build-args: |
+            DNS=${{ matrix.dns }}
