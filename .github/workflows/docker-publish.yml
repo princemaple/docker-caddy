@@ -54,6 +54,7 @@ jobs:
           context: .
           push: true
           tags: ${{ env.image_name }}:latest
+          build-args: DNS=cloudflare
 
       - name: Build and push tag
         uses: docker/build-push-action@v3
