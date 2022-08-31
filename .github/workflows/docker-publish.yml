@@ -17,7 +17,6 @@ jobs:
           - cloudflare
           - route53
           - duckdns
-          - lego-deprecated
           - dnspod
           - alidns
           - digitalocean
@@ -31,6 +30,13 @@ jobs:
           - netcup
           - metaname
           - netlify
+          - ovh
+          - vercel
+          - loopia
+          - dinahosting
+          - glesys
+          - dynv6
+          - ionos
 
     steps:
       - uses: actions/checkout@v3
