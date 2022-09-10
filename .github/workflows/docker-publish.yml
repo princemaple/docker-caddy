@@ -38,6 +38,7 @@ jobs:
           - dynv6
           - ionos
           - civo
+          - scaleway
 
     steps:
       - uses: actions/checkout@v3
