@@ -37,6 +37,7 @@ jobs:
           - glesys
           - dynv6
           - ionos
+          - civo
 
     steps:
       - uses: actions/checkout@v3
