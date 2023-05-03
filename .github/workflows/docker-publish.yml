@@ -14,6 +14,7 @@ jobs:
     strategy:
       matrix:
         dns:
+          - acmedns
           - cloudflare
           - route53
           - duckdns
@@ -40,6 +41,10 @@ jobs:
           - ionos
           - civo
           - scaleway
+          - porkbun
+          - inwx
+          - hosttech
+          - directadmin
 
     steps:
       - uses: actions/checkout@v3
