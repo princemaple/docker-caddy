@@ -27,7 +27,6 @@ jobs:
           - gandi
           - openstack-designate
           - googleclouddns
-          - google-domains
           - godaddy
           - netcup
           - metaname
