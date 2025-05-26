@@ -4,7 +4,7 @@ ARG DNS
 
 RUN xcaddy build \
     --with github.com/caddy-dns/$DNS \
-    --with github.com/caddyserver/caddy/v2=github.com/caddyserver/caddy/v2@v2.9.1
+    --with github.com/caddyserver/caddy/v2=github.com/caddyserver/caddy/v2@v2.10.0
 
 FROM caddy:2.10.0
 
