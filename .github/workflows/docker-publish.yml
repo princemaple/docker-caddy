@@ -14,39 +14,39 @@ jobs:
     strategy:
       matrix:
         dns:
-          - acmedns
+          # - acmedns
           - cloudflare
-          - route53
-          - duckdns
-          - dnspod
-          - alidns
-          - digitalocean
-          - hetzner
-          - vultr
-          - azure
-          - gandi
-          - openstack-designate
-          - googleclouddns
-          - godaddy
-          - netcup
-          - metaname
-          - netlify
-          - ovh
-          - vercel
-          - loopia
-          - dinahosting
-          - glesys
-          - dynv6
-          - ionos
-          - civo
-          - scaleway
-          - porkbun
-          - inwx
-          - hosttech
-          - directadmin
-          - dnsimple
-          - infomaniak
-          - rfc2136
+          # - route53
+          # - duckdns
+          # - dnspod
+          # - alidns
+          # - digitalocean
+          # - hetzner
+          # - vultr
+          # - azure
+          # - gandi
+          # - openstack-designate
+          # - googleclouddns
+          # - godaddy
+          # - netcup
+          # - metaname
+          # - netlify
+          # - ovh
+          # - vercel
+          # - loopia
+          # - dinahosting
+          # - glesys
+          # - dynv6
+          # - ionos
+          # - civo
+          # - scaleway
+          # - porkbun
+          # - inwx
+          # - hosttech
+          # - directadmin
+          # - dnsimple
+          # - infomaniak
+          # - rfc2136
 
     steps:
       - uses: actions/checkout@v4
